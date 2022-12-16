@@ -13,7 +13,6 @@ router = APIRouter()
 def get_home(
         *,
         db: Session = Depends(deps.get_db),
-        # _=Depends(deps.get_current_active_user),
 ) -> Any:
     home_page_articles = {
         "topicList": [{

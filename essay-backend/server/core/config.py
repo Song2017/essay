@@ -16,6 +16,7 @@ class Settings(BaseSettings):
         "http://139.196.0.1",
         "http://39.97.0.1",
         "http://localhost:3000",
+        "http://localhost",
     ]
 
     SQLALCHEMY_DATABASE_URI = os.getenv(
