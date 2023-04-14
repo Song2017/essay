@@ -1,4 +1,6 @@
 ## Backend server
+1. run a Postgres DB
+docker compose up f 
 
 ### Guide
 change directory to ./backend/server

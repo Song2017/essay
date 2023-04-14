@@ -16,17 +16,17 @@ router = APIRouter()
 
 @router.post("/login/access-token", response_model=Token)
 def login_access_token(
-        db: Session = Depends(deps.get_db),
-        form_data: OAuth2PasswordRequestForm = Depends()
+    db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
     """
     OAuth2 compatible token login, get an access token for future requests
     """
     user = CRUDBase(AppUser)
-    condition_in = {"full_name": form_data.username,
-                    "hashed_password": form_data.password,
-                    "is_active": True
-                    }
+    condition_in = {
+        "full_name": form_data.username,
+        "hashed_password": form_data.password,
+        "is_active": True,
+    }
     users = user.get_multi(db, page_no=1, page_size=1, condition_in=condition_in)
     if len(users) < 1:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
@@ -52,5 +52,5 @@ def test_token() -> Any:
         "is_active": True,
         "is_superuser": False,
         "full_name": "test",
-        "id": "1000"
+        "id": "1000",
     }
